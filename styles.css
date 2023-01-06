@@ -1,3 +1,167 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: white;
+    color: hsl(278, 68%, 11%);
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 16px;
+}
+
+/* img {
+    width: 100%;
+} */
+
+/* HEADER STYLES */
+header {
+    background: url("images/bg-main-mobile.png");
+    background-repeat: no-repeat;
+    color: white;
+    min-height: 200px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+#back {
+    background: url("images/bg-card-back.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    border: 1px solid red;
+    height: 150px;
+    width: 75%;
+    margin: 25px 15px 0 0;
+    align-self: flex-end;
+}
+
+#front {
+    border: 1px solid blue;
+    background: url("images/bg-card-front.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 150px;
+    width: 75%;
+    margin-left: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.numerals {
+    letter-spacing: .1em;
+    text-align: center;
+    width: 100%;
+}
+
+.card-details {
+    text-transform: uppercase;
+    font-size: .55em;
+    letter-spacing: .15em;
+}
+
+/* ENTRY FORM STYLES */
+#entry-form {
+    margin: 20px;
+    /* display: none; */
+}
+
+form {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 40px;
+}
+
+.long-form {
+    width: 100%;
+}
+
+.short-form {
+    width: 50%;
+}
+
+label {
+    text-transform: uppercase;
+    font-size: .65em;
+    letter-spacing: .15em;
+}
+
+input {
+    border: 1px solid hsl(270, 3%, 87%);
+    border-radius: 5px;
+    padding: 10px;
+    margin: 5px 0 10px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1em;
+}
+
+::placeholder {
+    color: hsl(279, 6%, 55%);
+}
+
+[name=name],
+[name=number] {
+    width: 100%;
+}
+
+[id=date] {
+    width: 40%;
+}
+
+[id=cvc] {
+    width: 100%;
+}
+
+[type=submit] {
+    width: 100%;
+    color: white;
+    background: hsl(278, 68%, 11%);
+    border: none;
+    margin-top: 15px;
+}
+
+/* CONFIRMATION PAGE STYLES */
+#confirmation {
+    margin: 20px;
+    text-align: center;
+    display: none;
+}
+
+#confirmation figure {
+    margin-top: 100px;
+}
+
+h1 {
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    font-weight: 500;
+    margin: 40px 0 10px;
+}
+
+#confirmation p {
+    color: hsl(279, 6%, 55%);
+}
+
+button {
+    width: 100%;
+    color: white;
+    background: hsl(278, 68%, 11%);
+    border: none;
+    border-radius: 5px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1em;
+    padding: 15px;
+    margin: 40px 0;
+}
+
+/* FOOTER STYLES */
+footer {
+    margin-top: 50px;
+}
+
 .attribution {
     font-size: 11px;
     text-align: center;
