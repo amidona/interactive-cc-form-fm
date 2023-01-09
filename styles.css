@@ -1,7 +1,7 @@
 * {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
 }
 
 body {
@@ -11,57 +11,82 @@ body {
     font-size: 16px;
 }
 
-/* img {
-    width: 100%;
-} */
+#content {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
 
 /* HEADER STYLES */
 header {
     background: url("images/bg-main-mobile.png");
     background-repeat: no-repeat;
+    background-size: cover;
     color: white;
-    min-height: 200px;
     display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-}
-
-#back {
-    background: url("images/bg-card-back.png");
-    background-repeat: no-repeat;
-    background-size: contain;
-    border: 1px solid red;
-    height: 150px;
-    width: 75%;
-    margin: 25px 15px 0 0;
-    align-self: flex-end;
-}
-
-#front {
-    border: 1px solid blue;
-    background: url("images/bg-card-front.png");
-    background-size: contain;
-    background-repeat: no-repeat;
-    height: 150px;
-    width: 75%;
-    margin-left: 15px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    padding: 20px;
-}
-
-.numerals {
-    letter-spacing: .1em;
-    text-align: center;
+    justify-content: center;
+    min-height: 220px;
     width: 100%;
 }
 
+#card-container {
+    /* border: 1px solid yellow; */
+    min-width: 360px;
+}
+
+#back {
+    /* border: 1px solid red; */
+    background: url("images/bg-card-back.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 150px;
+    margin: 25px 15px 0 70px;
+    max-width: 280px;
+    position: absolute;
+    width: 75%;
+}
+
+#back .card-details {
+    padding: 68px 0 0 220px;
+}
+
+#front {
+    /* border: 1px solid blue; */
+    background: url("images/bg-card-front.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-wrap: wrap;
+    height: 150px;
+    justify-content: space-between;
+    margin-left: 15px;
+    max-width: 280px;
+    padding: 20px;
+    position: absolute;
+    top: 110px;
+    width: 75%;
+    z-index: 1;
+}
+
+#front img {
+    padding-bottom: 30px;
+    width: 60%;
+}
+
+.numerals {
+    letter-spacing: .12em;
+    text-align: center;
+    width: 100%;
+    word-spacing: .2em;
+}
+
 .card-details {
-    text-transform: uppercase;
     font-size: .55em;
     letter-spacing: .15em;
+    text-transform: uppercase;
 }
+
 
 /* ENTRY FORM STYLES */
 #entry-form {
@@ -72,7 +97,7 @@ header {
 form {
     display: flex;
     flex-wrap: wrap;
-    margin-top: 40px;
+    margin-top: 80px;
 }
 
 .long-form {
@@ -84,18 +109,19 @@ form {
 }
 
 label {
-    text-transform: uppercase;
     font-size: .65em;
     letter-spacing: .15em;
+    text-transform: uppercase;
 }
 
 input {
     border: 1px solid hsl(270, 3%, 87%);
     border-radius: 5px;
-    padding: 10px;
-    margin: 5px 0 10px;
     font-family: 'Space Grotesk', sans-serif;
     font-size: 1em;
+    margin: 5px 0 10px;
+    padding: 10px;
+
 }
 
 ::placeholder {
@@ -116,18 +142,18 @@ input {
 }
 
 [type=submit] {
-    width: 100%;
-    color: white;
     background: hsl(278, 68%, 11%);
     border: none;
+    color: white;
     margin-top: 15px;
+    width: 100%;
 }
 
 /* CONFIRMATION PAGE STYLES */
 #confirmation {
+    display: none;
     margin: 20px;
     text-align: center;
-    display: none;
 }
 
 #confirmation figure {
@@ -135,10 +161,10 @@ input {
 }
 
 h1 {
-    text-transform: uppercase;
-    letter-spacing: .1em;
     font-weight: 500;
+    letter-spacing: .1em;
     margin: 40px 0 10px;
+    text-transform: uppercase;
 }
 
 #confirmation p {
@@ -146,20 +172,21 @@ h1 {
 }
 
 button {
-    width: 100%;
-    color: white;
     background: hsl(278, 68%, 11%);
     border: none;
     border-radius: 5px;
+    color: white;
     font-family: 'Space Grotesk', sans-serif;
     font-size: 1em;
-    padding: 15px;
     margin: 40px 0;
+    padding: 15px;
+    width: 100%;
 }
 
 /* FOOTER STYLES */
 footer {
     margin-top: 50px;
+    width: 100%;
 }
 
 .attribution {
@@ -169,4 +196,55 @@ footer {
 
 .attribution a {
     color: hsl(228, 45%, 44%);
+}
+
+@media (min-width: 900px) {
+    #content {
+        flex-wrap: nowrap;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    /* HEADER STYLES */
+    header {
+        background: url("images/bg-main-desktop.png");
+        height: 100vh;
+        max-width: 300px;
+    }
+
+    #back {
+        top: 320px;
+        left: 200px;
+        margin: 0;
+    }
+
+    #front {
+        top: 150px;
+        left: 150px;
+        margin: 0
+    }
+
+    /* ENTRY FORM STYLES */
+    #entry-form {
+        max-width: 300px;
+        margin-right: 100px;
+    }
+
+    form {
+        margin-top: 0;
+    }
+
+    /* CONFIRMATION PAGE STYLES */
+    #confirmation {
+
+        margin-right: 100px;
+    }
+
+    #confirmation figure {
+        margin-top: 0;
+    }
+
+    button {
+        min-width: 350px;
+    }
 }
