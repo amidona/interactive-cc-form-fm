@@ -9,6 +9,7 @@ body {
     color: hsl(278, 68%, 11%);
     font-family: 'Space Grotesk', sans-serif;
     font-size: 16px;
+    min-width: 355px;
 }
 
 #content {
@@ -31,7 +32,7 @@ header {
 }
 
 #card-container {
-    /* border: 1px solid yellow; */
+    /* border: 3px solid yellow; */
     min-width: 360px;
 }
 
@@ -198,36 +199,47 @@ footer {
     color: hsl(228, 45%, 44%);
 }
 
-@media (min-width: 900px) {
+/*********** TABLET STYLES ***********/
+@media (min-width: 875px) {
+
     #content {
+        align-items: center;
         flex-wrap: nowrap;
         justify-content: space-between;
-        align-items: center;
     }
 
     /* HEADER STYLES */
     header {
-        background: url("images/bg-main-desktop.png");
+        background: url("images/bg-main-desktop.png") no-repeat;
+        background-size: cover;
         height: 100vh;
         max-width: 300px;
     }
 
+    #card-container {
+        height: 100vh;
+    }
+
     #back {
-        top: 320px;
-        left: 200px;
+        left: 180px;
         margin: 0;
+        top: calc(50vh + 15px);
     }
 
     #front {
-        top: 150px;
-        left: 150px;
-        margin: 0
+        left: 130px;
+        margin: 0;
+        top: calc(50vh - 155px);
+    }
+
+    .numerals {
+        padding-bottom: 10px;
     }
 
     /* ENTRY FORM STYLES */
     #entry-form {
-        max-width: 300px;
         margin-right: 100px;
+        max-width: 300px;
     }
 
     form {
@@ -236,7 +248,6 @@ footer {
 
     /* CONFIRMATION PAGE STYLES */
     #confirmation {
-
         margin-right: 100px;
     }
 
@@ -244,7 +255,52 @@ footer {
         margin-top: 0;
     }
 
+}
+
+/********** DESKTOP STYLES **********/
+
+@media (min-width: 1050px) {
+
+    body {
+        font-size: 18px;
+        max-width: 1150px;
+    }
+
+    /* HEADER STYLES */
+    header {
+        max-width: 380px;
+    }
+
+    #back {
+        height: 180px;
+        left: 200px;
+        max-width: 330px;
+    }
+
+    #back .card-details {
+        padding: 82px 0 0 265px;
+    }
+
+    #front {
+        height: 180px;
+        left: 150px;
+        max-width: 330px;
+        top: calc(50vh - 195px);
+    }
+
+    #front img {
+        width: 75%;
+    }
+
+    /* ENTRY FORM STYLES */
+    #entry-form {
+        max-width: 400px;
+    }
+
+
+    /* CONFIRMATION PAGE STYLES */
     button {
         min-width: 350px;
     }
+
 }
