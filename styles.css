@@ -125,11 +125,21 @@ input {
 
 }
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
 ::placeholder {
     color: hsl(279, 6%, 55%);
 }
 
-[name=name],
+[name=cardholder],
 [name=number] {
     width: 100%;
 }
