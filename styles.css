@@ -125,14 +125,9 @@ input {
 
 }
 
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-}
-
-input[type=number] {
-    -moz-appearance: textfield;
+input:focus {
+    border: 1px solid hsl(249, 99%, 64%);
+    outline: 1px solid hsl(278, 94%, 30%);
 }
 
 ::placeholder {

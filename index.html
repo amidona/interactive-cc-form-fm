@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
-    <script src="./script.js" defer></script>
+
     <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
     <link rel="stylesheet" href="./styles.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -40,16 +40,16 @@
                 </div>
                 <div class="long-form">
                     <label for="number">Card Number</label><br>
-                    <input type="number" id="number" name="number" placeholder="e.g. 1234 5678 9123 0000" required><br>
+                    <input type="type" id="number" name="number" placeholder="e.g. 1234 5678 9123 0000" required><br>
                 </div>
                 <div class="short-form">
                     <label for="date">Exp. Date (MM/YY)</label><br>
-                    <input type="number" id="date" name="month" min="01" max="12" minlength="2" maxlength="2" placeholder="MM" required>
-                    <input type="number" id="date" name="year" min="00" max="99" minlength="2" maxlength="2" placeholder="YY" required><br>
+                    <input type="type" id="date" name="month" min="01" max="12" minlength="2" maxlength="2" placeholder="MM" required>
+                    <input type="type" id="date" name="year" min="00" max="99" minlength="2" maxlength="2" placeholder="YY" required><br>
                 </div>
                 <div class="short-form">
                     <label for="cvc">CVC</label><br>
-                    <input type="number" id="cvc" name="cvc" placeholder="e.g. 123" required><br>
+                    <input type="type" id="cvc" name="cvc" placeholder="e.g. 123" maxlength="4" required><br>
                 </div>
                 <input type="submit" value="Confirm">
             </form>
@@ -68,6 +68,7 @@
         Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
         Coded by <a href="https://allyceamidon.com/">Allyce Amidon</a>.
     </footer>
+    <script src="./script.js"></script>
 </body>
 
 </html>
