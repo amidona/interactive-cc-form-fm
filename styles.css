@@ -130,6 +130,11 @@ input:focus {
     outline: 1px solid hsl(278, 94%, 30%);
 }
 
+.error {
+    color: red;
+    font-size: .65em;
+}
+
 ::placeholder {
     color: hsl(279, 6%, 55%);
 }
