@@ -10,9 +10,10 @@ const formYear = document.querySelector("input[name='year']");
 const formCvc = document.querySelector("input[name='cvc']");
 const submitButton = document.querySelector("input[type='submit']");
 const continueButton = document.querySelector("#continue");
-const inputs = document.querySelectorAll("input");
+const inputs = document.querySelectorAll(".long-form input, .short-form input");
 const entryForm = document.querySelector("#entry-form");
 const confirmationPage = document.querySelector("#confirmation");
+const form = document.querySelector("form");
 
 
 // Function to deal with Cardholder's Name
@@ -34,12 +35,14 @@ formName.addEventListener("input", function () {
 // Function to deal with Card Number
 formNumber.addEventListener("input", function () {
     let numberError = document.querySelector("#number-error");
+    let alphaTest = /[a-z]/i;
+    cardNumber.innerText = this.value;
     if (formNumber.value === "") {
         formNumber.style.outline = "1px solid red";
         formNumber.style.border = "1px solid red";
         numberError.innerText = "Can't be blank";
         cardNumber.innerText = "0000 0000 0000 0000"
-    } else if (formNumber.value.includes("/^[a-zA-Z]+$/")) { /////////WORKING ON THIS BIT
+    } else if (alphaTest.test(formNumber.value)) { 
         formNumber.style.outline = "1px solid red";
         formNumber.style.border = "1px solid red";
         numberError.innerText = "Wrong format, numbers only";
@@ -47,7 +50,6 @@ formNumber.addEventListener("input", function () {
         number = number.value.split(" ").join("");
         let fixedNumber = number.match(/.{1,4}/g).join(" ");
         formNumber.value = fixedNumber;  
-        cardNumber.innerText = this.value;
     } else {
         formNumber.style.border = "1px solid hsl(249, 99%, 64%)";
         formNumber.style.outline = "1px solid hsl(278, 94%, 30%)";
@@ -55,8 +57,7 @@ formNumber.addEventListener("input", function () {
         let number = formNumber;
         number = number.value.split(" ").join("");
         let fixedNumber = number.match(/.{1,4}/g).join(" ");
-        formNumber.value = fixedNumber;  
-        cardNumber.innerText = this.value;     
+        formNumber.value = fixedNumber;    
     }
 })
 
@@ -124,20 +125,39 @@ formCvc.addEventListener("input", function() {
     }
 })
 
-submitButton.addEventListener("click", function() {
-    if (!formName.checkValidity() || !formNumber.checkValidity() || !formMonth.checkValidity() || !formYear.checkValidity() || !formCvc.checkValidity()) {
-        console.log("oops")
-    } else {
-        entryForm.style.display = "none";
-        confirmationPage.style.display = "block";
-    }
-})
 
-continueButton.addEventListener("click", function () {
-    confirmationPage.style.display = "none";
-    entryForm.style.display = "block";
-    // inputs.forEach( function (input) {
-    //     input.value === "";
-    // })
-})
+submitButton.addEventListener("click", function (e) {
+    debugger;
+    function check() {
+        inputs.forEach(input => {
+            if (input.value === "") {
+                input.style.border = "1px solid red";
+                input.style.outline = "1px solid red";
+                return false;
+            } else if (input.style.border === "1px solid red") {
+                return false;
+            } else {
+                return true;
+            }
+        })
+    }
+    if (check()) {
+        confirmationPage.style.display = "block";
+        entryForm.style.display = "none";
+        console.log("let's go"); 
+    } else {
+        e.preventDefault();
+        console.log("hold on")
+    }
+}) 
+    
+
+
+// continueButton.addEventListener("click", function () {
+//     confirmationPage.style.display = "none";
+//     entryForm.style.display = "block";
+//     // inputs.forEach( function (input) {
+//     //     input.value === "";
+//     // })
+// })
 
