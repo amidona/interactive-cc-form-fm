@@ -13,12 +13,16 @@ const continueButton = document.querySelector("#continue");
 const inputs = document.querySelectorAll(".long-form input, .short-form input");
 const entryForm = document.querySelector("#entry-form");
 const confirmationPage = document.querySelector("#confirmation");
-const form = document.querySelector("form");
+const form = document.querySelector("[name='card-entry-form']");
+const nameError = document.querySelector("#name-error");
+const numberError = document.querySelector("#number-error");
+const dateError = document.querySelector("#date-error");
+const cvcError = document.querySelector("#cvc-error");
+
 
 
 // Function to deal with Cardholder's Name
 formName.addEventListener("input", function () {
-    let nameError = document.querySelector("#name-error");
     cardName.innerText = this.value;
     if (formName.value === "") {
         formName.style.outline = "1px solid red";
@@ -31,10 +35,17 @@ formName.addEventListener("input", function () {
         nameError.innerText = ""
    }
 })
+formName.addEventListener("blur", function() {
+    if (formName.value === "") {
+        formName.style.outline = "1px solid red";
+        formName.style.border = "1px solid red";
+        nameError.innerText = "Can't be blank";
+        cardName.innerText = "Jane Appleseed"
+    }
+})
 
 // Function to deal with Card Number
 formNumber.addEventListener("input", function () {
-    let numberError = document.querySelector("#number-error");
     let alphaTest = /[a-z]/i;
     cardNumber.innerText = this.value;
     if (formNumber.value === "") {
@@ -60,12 +71,18 @@ formNumber.addEventListener("input", function () {
         formNumber.value = fixedNumber;    
     }
 })
-
+formNumber.addEventListener("blur", function () {
+    if (formNumber.value === "") {
+        formNumber.style.outline = "1px solid red";
+        formNumber.style.border = "1px solid red";
+        numberError.innerText = "Can't be blank";
+        cardNumber.innerText = "0000 0000 0000 0000"
+    }
+})
 
 // Function to deal with Month
 formMonth.addEventListener("input", function() {
     const monthNumber = Number(this.value);
-    let dateError = document.querySelector("#date-error");
     cardMonth.innerText = this.value;
     if (Number.isNaN(monthNumber)) {
         formMonth.style.border = "1px solid red";
@@ -82,11 +99,18 @@ formMonth.addEventListener("input", function() {
         dateError.innerText = "";
     }
 })
+formMonth.addEventListener("blur", function() {
+    if (formMonth.value === "") {
+        formMonth.style.border = "1px solid red";
+        formMonth.style.outline = "1px solid red";
+        dateError.innerText = "Can't be blank";
+        cardMonth.innerText = "00"
+    }
+})
 
 // Function to deal with Year
 formYear.addEventListener("input", function() {
     let yearNumber = Number(this.value);
-    let dateError = document.querySelector("#date-error");
     cardYear.innerText = this.value;
     if (Number.isNaN(yearNumber)) {
         formYear.style.border = "1px solid red";
@@ -103,11 +127,18 @@ formYear.addEventListener("input", function() {
         dateError.innerText = "";
     }
 })
+formYear.addEventListener("blur", function() {
+    if (formYear.value === "") {
+        formYear.style.border = "1px solid red";
+        formYear.style.outline = "1px solid red";
+        dateError.innerText = "Can't be blank";
+        cardYear.innerText = "00"
+    }
+})
 
 // Function to deal with CVC
 formCvc.addEventListener("input", function() {
     let cvcNumber = Number(this.value);
-    let cvcError = document.querySelector("#cvc-error");
     cardCvc.innerText = this.value;
     if (Number.isNaN(cvcNumber)) {
         formCvc.style.border = "1px solid red";
@@ -124,40 +155,62 @@ formCvc.addEventListener("input", function() {
         cvcError.innerText = "";
     }
 })
-
-
-submitButton.addEventListener("click", function (e) {
-    debugger;
-    function check() {
-        inputs.forEach(input => {
-            if (input.value === "") {
-                input.style.border = "1px solid red";
-                input.style.outline = "1px solid red";
-                return false;
-            } else if (input.style.border === "1px solid red") {
-                return false;
-            } else {
-                return true;
-            }
-        })
+formCvc.addEventListener("blur", function() {
+    if (formCvc.value === "") {
+        formCvc.style.border = "1px solid red";
+        formCvc.style.outline = "1px solid red";
+        cvcError.innerText = "Can't be blank";
+        cardCvc.innerText = "00"
     }
-    if (check()) {
-        confirmationPage.style.display = "block";
-        entryForm.style.display = "none";
-        console.log("let's go"); 
+})
+
+submitButton.addEventListener("click", function(e) {
+    if (formName.value === "") {
+        formName.style.outline = "1px solid red";
+        formName.style.border = "1px solid red";
+        nameError.innerText = "Can't be blank";
+        e.preventDefault();
+        console.log("name issue");
+    } else if (formNumber.value === "") {
+        formNumber.style.outline = "1px solid red";
+        formNumber.style.border = "1px solid red";
+        numberError.innerText = "Can't be blank";
+        e.preventDefault();
+        console.log("number issue");
+    } else if (formMonth.value === "") {
+        formMonth.style.border = "1px solid red";
+        formMonth.style.outline = "1px solid red";
+        dateError.innerText = "Can't be blank";
+        e.preventDefault();
+        console.log("month issue");
+    } else if (formYear.value === "") {
+        formYear.style.border = "1px solid red";
+        formYear.style.outline = "1px solid red";
+        dateError.innerText = "Can't be blank";
+        e.preventDefault();
+        console.log("year issue");
+    } else if (formCvc.value === "") {
+        formCvc.style.border = "1px solid red";
+        formCvc.style.outline = "1px solid red";
+        cvcError.innerText = "Can't be blank";
+        e.preventDefault();
+        console.log("cvc issue");
+    } else if (nameError.innerText || numberError.innerText || dateError.innerText || cvcError.innerText !== "") {
+        e.preventDefault();
+        console.log("error code issue");
     } else {
         e.preventDefault();
-        console.log("hold on")
+        confirmationPage.style.display = "block";
+        entryForm.style.display = "none";
+        console.log("all good");
     }
-}) 
-    
+})
+
+continueButton.addEventListener("click", function () {
+    confirmationPage.style.display = "none";
+    entryForm.style.display = "block";
+    form.submit();
+})
 
 
-// continueButton.addEventListener("click", function () {
-//     confirmationPage.style.display = "none";
-//     entryForm.style.display = "block";
-//     // inputs.forEach( function (input) {
-//     //     input.value === "";
-//     // })
-// })
 
