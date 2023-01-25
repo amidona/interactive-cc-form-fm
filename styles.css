@@ -32,12 +32,10 @@ header {
 }
 
 #card-container {
-    /* border: 3px solid yellow; */
     min-width: 360px;
 }
 
 #back {
-    /* border: 1px solid red; */
     background: url("images/bg-card-back.png");
     background-repeat: no-repeat;
     background-size: contain;
@@ -53,7 +51,6 @@ header {
 }
 
 #front {
-    /* border: 1px solid blue; */
     background: url("images/bg-card-front.png");
     background-size: contain;
     background-repeat: no-repeat;
@@ -92,7 +89,6 @@ header {
 /* ENTRY FORM STYLES */
 #entry-form {
     margin: 20px;
-    /* display: none; */
 }
 
 form {
@@ -156,6 +152,7 @@ input:focus {
     background: hsl(278, 68%, 11%);
     border: none;
     color: white;
+    cursor: pointer;
     margin-top: 15px;
     width: 100%;
 }
@@ -187,6 +184,7 @@ button {
     border: none;
     border-radius: 5px;
     color: white;
+    cursor: pointer;
     font-family: 'Space Grotesk', sans-serif;
     font-size: 1em;
     margin: 40px 0;
