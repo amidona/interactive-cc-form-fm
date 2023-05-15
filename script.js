@@ -19,8 +19,6 @@ const numberError = document.querySelector("#number-error");
 const dateError = document.querySelector("#date-error");
 const cvcError = document.querySelector("#cvc-error");
 
-https://developer.mozilla.org/en-US/docs/Learn/Forms/Form_validation
-
 // Function to deal with clicking out of the box without typing anything
 inputs.forEach(function (input) {
 	input.addEventListener("blur", function () {
@@ -50,14 +48,14 @@ formName.addEventListener("input", function () {
 
 // Function to deal with Card Number
 formNumber.addEventListener("input", function () {
-	let alphaTest = /[a-z]/i;
+	const regex = new RegExp(/[0-9]/g);
 	cardNumber.innerText = this.value;
 	if (formNumber.value === "") {
 		formNumber.style.outline = "1px solid red";
 		formNumber.style.border = "1px solid red";
 		numberError.innerText = "Can't be blank";
 		cardNumber.innerText = "0000 0000 0000 0000";
-	} else if (alphaTest.test(formNumber.value)) {
+	} else if (!regex.test(formNumber.value)) {
 		formNumber.style.outline = "1px solid red";
 		formNumber.style.border = "1px solid red";
 		numberError.innerText = "Wrong format, numbers only";
